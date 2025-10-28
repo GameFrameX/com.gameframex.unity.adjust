@@ -1,0 +1,19 @@
+{
+  "name": "GameFrameX.AdJust.Editor",
+  "references": [
+    "GameFrameX.Editor",
+    "GameFrameX.Runtime",
+    "GameFrameX.AdJust.Runtime"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

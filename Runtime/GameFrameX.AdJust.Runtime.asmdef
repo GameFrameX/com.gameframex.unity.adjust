@@ -1,0 +1,23 @@
+{
+  "name": "GameFrameX.AdJust.Runtime",
+  "rootNamespace": "GameFrameX.AdJust.Runtime",
+  "references": [
+    "GameFrameX.Runtime",
+    "AdjustSdk.Scripts"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [
+    {
+      "name": "com.adjust.sdk",
+      "expression": "",
+      "define": "ENABLE_GAME_FRAME_X_ADJUST"
+    }
+  ],
+  "noEngineReferences": false
+}

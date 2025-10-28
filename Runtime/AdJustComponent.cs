@@ -1,0 +1,93 @@
+﻿// GameFrameX 组织下的以及组织衍生的项目的版权、商标、专利和其他相关权利均受相应法律法规的保护。使用本项目应遵守相关法律法规和许可证的要求。
+// 
+// 本项目主要遵循 MIT 许可证和 Apache 许可证（版本 2.0）进行分发和使用。许可证位于源代码树根目录中的 LICENSE 文件。
+// 
+// 不得利用本项目从事危害国家安全、扰乱社会秩序、侵犯他人合法权益等法律法规禁止的活动！任何基于本项目二次开发而产生的一切法律纠纷和责任，我们不承担任何责任！
+
+using System.Collections.Generic;
+using AdjustSdk;
+using GameFrameX.Runtime;
+using UnityEngine;
+
+namespace GameFrameX.AdJust.Runtime
+{
+    /// <summary>
+    /// AdJust 组件。
+    /// </summary>
+    [DisallowMultipleComponent]
+    [AddComponentMenu("Game Framework/AdJust")]
+    [UnityEngine.Scripting.Preserve]
+    [RequireComponent(typeof(Adjust))]
+    public class AdJustComponent : GameFrameworkComponent
+    {
+        private IAdJustManager _adJustManager = null;
+        [SerializeField] private bool m_debug = false;
+
+        /// <summary>
+        /// AdJust SDK的App Token，用于初始化AdJust SDK
+        /// </summary>
+        [SerializeField] private string m_appToken = string.Empty;
+
+        /// <summary>
+        /// AdJust日志级别，控制SDK输出日志的详细程度
+        /// </summary>
+        [SerializeField] private AdjustLogLevel m_logLevel = AdjustLogLevel.Info;
+
+        /// <summary>
+        /// AdJust运行环境，指定SDK运行在生产环境还是沙盒环境
+        /// </summary>
+        [SerializeField] private AdjustEnvironment m_environment = AdjustEnvironment.Sandbox;
+
+        /// <summary>
+        /// 游戏框架组件初始化。
+        /// </summary>
+        protected override void Awake()
+        {
+            ImplementationComponentType = Utility.Assembly.GetType(componentType);
+            InterfaceComponentType = typeof(IAdJustManager);
+            base.Awake();
+
+            _adJustManager = GameFrameworkEntry.GetModule<IAdJustManager>();
+            if (_adJustManager == null)
+            {
+                Log.Fatal("AdJust manager is invalid.");
+                return;
+            }
+        }
+
+        [UnityEngine.Scripting.Preserve]
+        public void Start()
+        {
+            _adJustManager.Init(m_debug, m_appToken, m_logLevel, m_environment);
+        }
+
+        /// <summary>
+        /// 发送自定义事件到 Adjust
+        /// </summary>
+        /// <param name="eventName">事件名称，用于标识特定的用户行为或应用内事件</param>
+        /// <param name="eventValues">事件参数字典，包含与事件相关的键值对数据</param>
+        /// <param name="productId">产品ID，用于标识特定的商品或服务</param>
+        /// <param name="transactionId">交易ID，用于标识唯一的交易记录</param>
+        /// <param name="revenue">事件收入金额，单位为货币单位</param>
+        /// <param name="currency">货币单位，例如 "USD"、"EUR" 等</param>
+        public void Event(string eventName, Dictionary<string, string> eventValues, string productId = null, string transactionId = null, double revenue = 0, string currency = "USD")
+        {
+            _adJustManager.Event(eventName, eventValues, productId, transactionId, revenue, currency);
+        }
+
+        /// <summary>
+        /// 发送广告事件到 Adjust
+        /// </summary>
+        /// <param name="eventName">事件名称，用于标识特定的用户行为或应用内事件</param>
+        /// <param name="revenue">广告收入金额，单位为货币单位</param>
+        /// <param name="currency">货币单位，例如 "USD"、"EUR" 等</param>
+        /// <param name="adRevenueNetwork">广告网络名称，例如 "AdMob"、"Facebook" 等</param>
+        /// <param name="adRevenuePlacement">广告 placement ID，用于标识广告位置</param>
+        /// <param name="adRevenueUnit">广告单位，例如 "impression"、"click" 等</param>
+        [UnityEngine.Scripting.Preserve]
+        public void EventAd(string eventName, double revenue, string currency, string adRevenueNetwork = null, string adRevenuePlacement = null, string adRevenueUnit = null)
+        {
+            _adJustManager.EventAd(eventName, revenue, currency, adRevenueNetwork, adRevenuePlacement, adRevenueUnit);
+        }
+    }
+}
