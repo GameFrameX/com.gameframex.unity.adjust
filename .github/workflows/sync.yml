@@ -2,6 +2,14 @@ name: Sync Github To Image (External)
 
 on:
   push:
+    branches:
+      - '**'
+    tags-ignore:
+      - '**'
+  workflow_run:
+    workflows: ["Publish Release"]  # 监听的工作流名称
+    types:
+      - completed  # 监听完成事件
   #schedule:
     # 定时任务，每天 UTC 时间 0 点运行
     #- cron: "0 0 * * *"
