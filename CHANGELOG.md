@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/gameframex/com.gameframex.unity.adjust/compare/1.0.0...1.1.0) (2025-12-24)
+
+
+### Features
+
+* **ci:** change ci ([638374d](https://github.com/gameframex/com.gameframex.unity.adjust/commit/638374d26fc64c0fd12e6dd992a9646377b89705))
+
 # Changelog
 
 
