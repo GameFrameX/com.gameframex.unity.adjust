@@ -1,98 +1,145 @@
-# Game Frame X AdJust
+<div align="center">
 
-Game Frame X AdJust 是一个基于 GameFrameX 框架的 AdJust SDK Unity 包装器，为 Unity 游戏提供移动应用归因和营销分析功能。
+![GameFrameX Logo](https://download.alianblank.com/gameframex/gameframex_logo_320.png)
 
-## 功能特性
+# GameFrameX Adjust Package
 
-- 🎯 **移动应用归因**: 跟踪用户获取来源和营销活动效果
-- 📊 **营销分析**: 提供详细的用户行为和转化数据
-- 🔧 **简单集成**: 基于 GameFrameX 框架的组件化设计
-- 📱 **跨平台支持**: 同时支持 iOS 和 Android 平台
-- 🛡️ **隐私合规**: 内置用户同意管理机制
+[![Version](https://img.shields.io/github/v/release/GameFrameX/com.gameframex.unity.adjust)](https://github.com/GameFrameX/com.gameframex.unity.adjust)
+[![Unity](https://img.shields.io/badge/Unity-2019.4+-green.svg)](https://unity3d.com/get-unity/download)
+[![License](https://img.shields.io/badge/license-MIT+Apache%202.0-orange.svg)](LICENSE.md)
+[![Documentation](https://img.shields.io/badge/docs-gameframex.doc.alianblank.com-brightgreen.svg)](https://gameframex.doc.alianblank.com)
 
-## 系统要求
+**All-in-One Solution for Indie Game Development · Empowering Indie Developers' Dreams**
 
-- Unity 2019.4 或更高版本
-- GameFrameX 框架 1.1.1 或更高版本
-- AdJust Unity SDK 4.38.0
+[📖 Documentation](https://gameframex.doc.alianblank.com) | [🚀 Quick Start](#quick-start) | [💬 QQ Group: 467608841](https://qm.qq.com/cgi-bin/qm/qr?k=sYFd1nv6m2KZIWFLorZ5pBR0AE5ZhbuL&jump_from=webapi&authKey=oCu+uoL3n35fT5SEt7iLgGtROPxh31n/rHUxRlp0w1f+j38W4tKBuWyRH3KEdwHN)
 
-## 安装
+---
 
-### 通过 Unity Package Manager 安装
+🌐 **Language**: **English** | [简体中文](./README.zh-CN.md) | [繁體中文](./README.zh-TW.md) | [日本語](./README.ja.md) | [한국어](./README.ko.md)
 
-1. 打开 Unity Package Manager
-2. 点击 "+" 按钮，选择 "Add package from git URL"
-3. 输入以下 URL：
+---
+
+</div>
+
+## 📑 Table of Contents
+
+- [Project Overview](#project-overview)
+- [Quick Start](#quick-start)
+- [Usage Examples](#usage-examples)
+- [Documentation & Resources](#documentation--resources)
+- [Community & Support](#community--support)
+- [License](#license)
+
+---
+
+## Project Overview
+
+GameFrameX Adjust is an Adjust SDK Unity wrapper based on the GameFrameX framework, providing mobile app attribution and marketing analytics for Unity games.
+
+### Key Features
+
+- 🎯 **Mobile App Attribution** - Track user acquisition sources and campaign performance
+- 📊 **Marketing Analytics** - Detailed user behavior and conversion data
+- 🔧 **Easy Integration** - Component-based design built on GameFrameX framework
+- 📱 **Cross-Platform** - Supports both iOS and Android platforms
+- 🛡️ **Privacy Compliance** - Built-in user consent management mechanism
+
+### System Requirements
+
+- Unity 2019.4 or higher
+- GameFrameX Framework 1.1.1 or higher
+- Adjust Unity SDK 4.38.0
+
+---
+
+## Quick Start
+
+### Installation
+
+#### Method 1: Unity Package Manager (Recommended)
+
+1. Open Unity Package Manager
+2. Click the `+` button and select `Add package from git URL`
+3. Enter the following URL:
    ```
    https://github.com/gameframex/com.gameframex.unity.adjust.git
    ```
 
-### 手动安装
+#### Method 2: Manual Installation
 
-1. 下载或克隆此仓库
-2. 将包文件夹复制到你的 Unity 项目的 `Packages` 目录中
+1. Download or clone this repository
+2. Copy the package folder to your Unity project's `Packages` directory
 
-## 配置
+### Configuration
 
-### 1. 添加 AdJust 组件
+#### 1. Add Adjust Component
 
-在场景中的某个 GameObject 上添加 `AdJustComponent` 组件。
+Add the `AdJustComponent` component to a GameObject in your scene.
 
-### 2. 配置开发者密钥和应用ID
+#### 2. Configure Developer Key and App ID
 
-在 `AdJustComponent` 组件中配置以下参数：
+Configure the following parameters in the `AdJustComponent`:
 
-- **App Token**: 从 AdJust 控制台获取的应用 Token
-- **Log Level**: AdJust 日志级别
-- **Environment**: AdJust 运行环境
+- **App Token**: Your app token from the Adjust console
+- **Log Level**: Adjust log level
+- **Environment**: Adjust environment
 
-### 3. 启用调试模式（可选）
+#### 3. Enable Debug Mode (Optional)
 
-勾选 `Debug` 选项以启用 AdJust SDK 的调试日志输出。
-
-## 使用方法
-
-### 基本初始化
-
-AdJust 组件会在游戏启动时自动初始化。确保在场景中添加了 `AdJustComponent` 并正确配置了相关参数。
-
-### 编译符号
-
-包使用 `ENABLE_GAME_FRAME_X_ADJUST` 编译符号来控制 AdJust 功能的启用。确保在项目设置中定义了此符号。
-
-## 项目结构
-
-```
-Runtime/
-├── AdJustComponent.cs          # AdJust Unity 组件
-├── AdJustManager.cs            # AdJust 管理器实现
-├── IAdJustManager.cs           # AdJust 管理器接口
-└── GameFrameXAdJustCroppingHelper.cs  # 代码裁剪辅助类
-
-Editor/
-├── AdJustComponentInspector.cs # 组件检查器
-└── GameFrameX.AdJust.Editor.asmdef  # 编辑器程序集定义
-```
-
-## 依赖项
-
-- `com.gameframex.unity`: GameFrameX 核心框架
-- `com.adjust.sdk`: AdJust Unity SDK
-
-## 许可证
-
-本项目遵循 MIT 许可证和 Apache 许可证（版本 2.0）。详细信息请查看 [LICENSE](LICENSE.md) 文件。
-
-## 支持
-
-- 文档地址: https://gameframex.doc.alianblank.com
-- 仓库地址: https://github.com/gameframex/com.gameframex.unity.adjust
-- 问题反馈: https://github.com/gameframex/com.gameframex.unity.adjust/issues
-
-## 作者
-
-- **Blank** - [alianblank@outlook.com](mailto:alianblank@outlook.com)
+Check the `Debug` option to enable Adjust SDK debug log output.
 
 ---
 
-*独立游戏前后端一体化解决方案，独立游戏开发者的圆梦大使。*
+## Usage Examples
+
+### Basic Initialization
+
+The Adjust component will initialize automatically when the game starts. Make sure `AdJustComponent` is added to the scene with correct parameters configured.
+
+### Define Symbol
+
+The package uses the `ENABLE_GAME_FRAME_X_ADJUST` define symbol to control Adjust functionality. Make sure this symbol is defined in your project settings.
+
+### Project Structure
+
+```
+Runtime/
+├── AdJustComponent.cs          # Adjust Unity Component
+├── AdJustManager.cs            # Adjust Manager Implementation
+├── IAdJustManager.cs           # Adjust Manager Interface
+└── GameFrameXAdJustCroppingHelper.cs  # Code Cropping Helper
+
+Editor/
+├── AdJustComponentInspector.cs # Component Inspector
+└── GameFrameX.AdJust.Editor.asmdef  # Editor Assembly Definition
+```
+
+---
+
+## Documentation & Resources
+
+- 📖 **Documentation**: [https://gameframex.doc.alianblank.com](https://gameframex.doc.alianblank.com)
+- 🐛 **Issue Tracker**: [GitHub Issues](https://github.com/GameFrameX/com.gameframex.unity.adjust/issues)
+
+---
+
+## Community & Support
+
+- 💬 **QQ Group**: [467608841](https://qm.qq.com/cgi-bin/qm/qr?k=sYFd1nv6m2KZIWFLorZ5pBR0AE5ZhbuL&jump_from=webapi&authKey=oCu+uoL3n35fT5SEt7iLgGtROPxh31n/rHUxRlp0w1f+j38W4tKBuWyRH3KEdwHN)
+- 💡 **Feature Requests**: [GitHub Discussions](https://github.com/GameFrameX/com.gameframex.unity.adjust/discussions)
+
+---
+
+## License
+
+This project is distributed under **MIT License** and **Apache License 2.0** dual licensing.
+
+See full license text: [LICENSE.md](LICENSE.md)
+
+---
+
+<div align="center">
+
+**If this project helps you, please give us a ⭐ Star!**
+
+</div>
